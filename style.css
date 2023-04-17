@@ -1,0 +1,19 @@
+.main-content {
+    min-height: calc(100vh - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(253, 249, 238);
+}
+
+.question-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+    padding-top: 8px;
+}
+
+.card {
+    background-color: rgb(245, 245, 245);
+}
