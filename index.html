@@ -29,33 +29,34 @@
             <div class="card-body">
                 <h5 class="card-title mb-3" id="question-text"></h5>
 
-                <div class="card mb-2">
+                <div class="card quiz-answer-card mb-2" onclick="answer('answer_1')">
                     <div class="card-body" id="answer_1">
 
                     </div>
                 </div>
 
-                <div class="card mb-2">
+                <div class="card quiz-answer-card mb-2" onclick="answer('answer_2')">
                     <div class="card-body" id="answer_2">
 
                     </div>
                 </div>
 
-                <div class="card mb-2">
+                <div class="card quiz-answer-card mb-2" onclick="answer('answer_3')">
                     <div class="card-body" id="answer_3">
 
                     </div>
                 </div>
 
-                <div class="card mb-2">
+                <div class="card quiz-answer-card mb-2" onclick="answer('answer_4')">
                     <div class="card-body" id="answer_4">
 
                     </div>
                 </div>
 
                 <div class="question-footer">
-                    <span><b>1</b> von <b id="max-questions"></b> Fragen</span>
-                    <button class="btn btn-outline-danger">Nächste Frage</button>
+                    <span><b id="current-question"></b> von <b id="max-questions"></b> Fragen</span>
+                    <button onclick="nextQuestion()" id="next-button" class="btn btn-outline-primary" disabled>Nächste
+                        Frage</button>
                 </div>
             </div>
         </div>

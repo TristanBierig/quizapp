@@ -17,3 +17,14 @@
 .card {
     background-color: rgb(245, 245, 245);
 }
+
+.quiz-answer-card:hover {
+    cursor: pointer;
+    background-color: rgba(194, 194, 194, 0.2);
+    transition: 100ms ease-in-out;
+}
+
+.bg-success,
+.bg-danger {
+    color: white;
+}

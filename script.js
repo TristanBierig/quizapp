@@ -12,7 +12,7 @@ let questions = [
         "question": "Mozart war ein begnadeter Musiker auf welchem Instrument?",
         "image": "./img/question1.jpg",
         "answer_1": "Klavier",
-        "answer_2": "Violine",
+        "answer_2": "Theremin",
         "answer_3": "E-Gitarre",
         "answer_4": "Triangel",
         "right_answer": 1
@@ -51,20 +51,65 @@ let currentQuestion = 0;
 
 
 function init() {
-    let max = document.getElementById('max-questions');
-    let number = questions.length;
     showQuestion();
-    max.innerHTML = number;
 }
 
 
 function showQuestion() {
     let question = questions[currentQuestion];
+    let max = document.getElementById('max-questions');
+    let current = document.getElementById('current-question');
+    let number = questions.length;
+    let currentNumber = currentQuestion + 1;
 
+    max.innerHTML = number;
+    current.innerHTML = currentNumber;
     document.getElementById('question-image').src = question['image'];
     document.getElementById('question-text').innerHTML = question['question'];
     document.getElementById('answer_1').innerHTML = question['answer_1'];
     document.getElementById('answer_2').innerHTML = question['answer_2'];
     document.getElementById('answer_3').innerHTML = question['answer_3'];
     document.getElementById('answer_4').innerHTML = question['answer_4'];
+}
+
+
+
+function answer(selection) {
+    let question = questions[currentQuestion];
+    let selectedQuestionNumber = selection.slice(-1);
+    let rightAnswer = question['right_answer'];
+    let idOfRightAnswer = `answer_${rightAnswer}`;
+
+    if (selectedQuestionNumber == rightAnswer) {
+
+        document.getElementById(selection).parentNode.classList.add('bg-success');
+    } else {
+        document.getElementById(selection).parentNode.classList.add('bg-danger');
+        document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+    }
+
+    document.getElementById('next-button').disabled = false;
+}
+
+
+function nextQuestion() {
+    currentQuestion++;
+    document.getElementById('next-button').disabled = true;
+    resetAnswerStyle();
+    showQuestion();
+}
+
+
+function resetAnswerStyle() {
+    for (let i = 1; i < 5; i++) {
+        let answer = document.getElementById(`answer_${i}`).parentNode;
+
+        if (answer.classList.contains('bg-success')) {
+            answer.classList.remove('bg-success');
+        } else {
+            if (answer.classList.contains('bg-danger')) {
+                answer.classList.remove('bg-danger')
+            }
+        }
+    }
 }
