@@ -48,6 +48,7 @@ let questions = [
 
 
 let currentQuestion = 0;
+let rightQuestions = 0;
 
 
 function init() {
@@ -56,22 +57,31 @@ function init() {
 
 
 function showQuestion() {
-    let question = questions[currentQuestion];
-    let max = document.getElementById('max-questions');
-    let current = document.getElementById('current-question');
-    let number = questions.length;
-    let currentNumber = currentQuestion + 1;
 
-    max.innerHTML = number;
-    current.innerHTML = currentNumber;
-    document.getElementById('question-image').src = question['image'];
-    document.getElementById('question-text').innerHTML = question['question'];
-    document.getElementById('answer_1').innerHTML = question['answer_1'];
-    document.getElementById('answer_2').innerHTML = question['answer_2'];
-    document.getElementById('answer_3').innerHTML = question['answer_3'];
-    document.getElementById('answer_4').innerHTML = question['answer_4'];
+    if (currentQuestion >= questions.length) {
+        document.getElementById('end-screen').style = '';
+        document.getElementById('question-image').style = 'display: none;';
+        document.getElementById('question-card').style = 'display: none;';
+        document.getElementById('end-max-score').innerHTML = questions.length;
+        document.getElementById('end-actual-score').innerHTML = rightQuestions;
+
+    } else {
+        let question = questions[currentQuestion];
+        let max = document.getElementById('max-questions');
+        let current = document.getElementById('current-question');
+        let number = questions.length;
+        let currentNumber = currentQuestion + 1;
+
+        max.innerHTML = number;
+        current.innerHTML = currentNumber;
+        document.getElementById('question-image').src = question['image'];
+        document.getElementById('question-text').innerHTML = question['question'];
+        document.getElementById('answer_1').innerHTML = question['answer_1'];
+        document.getElementById('answer_2').innerHTML = question['answer_2'];
+        document.getElementById('answer_3').innerHTML = question['answer_3'];
+        document.getElementById('answer_4').innerHTML = question['answer_4'];
+    }
 }
-
 
 
 function answer(selection) {
@@ -81,7 +91,7 @@ function answer(selection) {
     let idOfRightAnswer = `answer_${rightAnswer}`;
 
     if (selectedQuestionNumber == rightAnswer) {
-
+        rightQuestions++;
         document.getElementById(selection).parentNode.classList.add('bg-success');
     } else {
         document.getElementById(selection).parentNode.classList.add('bg-danger');

@@ -24,9 +24,21 @@
     </nav>
 
     <section class="main-content">
-        <div class="card" style="width: 25rem;">
+        <div id="card" class="card" style="width: 25rem;">
+            <div id="end-screen" class="end-screen" style="display: none;">
+                <img src="./mockup/dark/brainresult.png">
+                <span class="text-center">COMPLETE QUIZ</span>
+                <span>
+                    <p>YOUR SCORE</p>
+                    <b id="end-actual-score"></b>/<b id="end-max-score"></b>
+                </span>
+                <div>
+                    <button class="btn btn-primary">SHARE</button>
+                    <button class="btn btn-outline-primary">REPLAY</button>
+                </div>
+            </div>
             <img id="question-image" src="" class="card-img-top" alt="">
-            <div class="card-body">
+            <div id="question-card" class="card-body">
                 <h5 class="card-title mb-3" id="question-text"></h5>
 
                 <div class="card quiz-answer-card mb-2" onclick="answer('answer_1')">

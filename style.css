@@ -28,3 +28,34 @@
 .bg-danger {
     color: white;
 }
+
+.text-center {
+    text-align: center;
+}
+
+.end-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 16px;
+    min-height: 400px;
+    text-align: center;
+}
+
+.end-screen :nth-child(3) {
+    display: flex;
+    gap: 8px;
+}
+
+.end-screen :nth-child(4) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 40%;
+}
+
+.end-screen img {
+    height: 96px;
+    width: 96px;
+}
