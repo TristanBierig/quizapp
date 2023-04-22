@@ -153,10 +153,11 @@ function resetAnswerStyle() {
 
 
 function restartGame() {
-    
+
     rightQuestions = 0;
     currentQuestion = 0;
     document.getElementById('end-screen').style = 'display: none;';
+    document.getElementById('final-img').style = 'display: none;';
     document.getElementById('question-image').style = '';
     document.getElementById('question-card').style = '';
     init();
