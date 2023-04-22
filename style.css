@@ -60,6 +60,16 @@
     width: 96px;
 }
 
+.orange {
+    color: coral;
+}
+
+#final-img {
+    position: absolute;
+    right: 0;
+}
+
+
 @media(max-width: 500px) {
 
     .navbar {
