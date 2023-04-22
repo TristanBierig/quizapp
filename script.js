@@ -51,6 +51,7 @@ let currentQuestion = 0;
 let rightQuestions = 0;
 let AUDIO_SUCCESS = new Audio('audio/success.mp3');
 let AUDIO_FAIL = new Audio('audio/fail.mp3');
+let AUDIO_VICTORY = new Audio('audio/victory.mp3');
 
 
 function init() {
@@ -61,6 +62,7 @@ function init() {
 function showQuestion() {
     if (gameOver()) {
         showEndscreen();
+        AUDIO_VICTORY.play();
     } else {
         updateProgressbar();
         updateQuestionCard();
