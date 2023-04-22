@@ -49,6 +49,8 @@ let questions = [
 
 let currentQuestion = 0;
 let rightQuestions = 0;
+let AUDIO_SUCCESS = new Audio('audio/success.mp3');
+let AUDIO_FAIL = new Audio('audio/fail.mp3');
 
 
 function init() {
@@ -59,6 +61,7 @@ function init() {
 function showQuestion() {
 
     if (currentQuestion >= questions.length) {
+        // Show endScreen
         document.getElementById('end-screen').style = '';
         document.getElementById('question-image').style = 'display: none;';
         document.getElementById('question-card').style = 'display: none;';
@@ -66,6 +69,12 @@ function showQuestion() {
         document.getElementById('end-actual-score').innerHTML = rightQuestions;
 
     } else {
+        let percent = (currentQuestion + 1) / questions.length;
+        percent = Math.round(percent * 100);
+        document.getElementById('progress-bar').innerHTML = `${percent} %`;
+        document.getElementById('progress-bar').style.width = `${percent}%`;
+
+
         let question = questions[currentQuestion];
         let max = document.getElementById('max-questions');
         let current = document.getElementById('current-question');
@@ -90,12 +99,16 @@ function answer(selection) {
     let rightAnswer = question['right_answer'];
     let idOfRightAnswer = `answer_${rightAnswer}`;
 
-    if (selectedQuestionNumber == rightAnswer) {
-        rightQuestions++;
-        document.getElementById(selection).parentNode.classList.add('bg-success');
-    } else {
-        document.getElementById(selection).parentNode.classList.add('bg-danger');
-        document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+    if (document.getElementById('next-button').disabled) {
+        if (selectedQuestionNumber == rightAnswer) {
+            rightQuestions++;
+            document.getElementById(selection).parentNode.classList.add('bg-success');
+            AUDIO_SUCCESS.play();
+        } else {
+            document.getElementById(selection).parentNode.classList.add('bg-danger');
+            document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+            AUDIO_FAIL.play();
+        }
     }
 
     document.getElementById('next-button').disabled = false;
@@ -122,4 +135,15 @@ function resetAnswerStyle() {
             }
         }
     }
+}
+
+
+function restartGame() {
+    document.getElementById('question-image').src = 'img/question0.jpg';
+    rightQuestions = 0;
+    currentQuestion = 0;
+    document.getElementById('end-screen').style = 'display: none;';
+    document.getElementById('question-image').style = '';
+    document.getElementById('question-card').style = '';
+    init();
 }

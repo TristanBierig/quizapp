@@ -59,3 +59,18 @@
     height: 96px;
     width: 96px;
 }
+
+@media(max-width: 500px) {
+
+    .navbar {
+        display: none;
+    }
+
+    #card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        width: 100% !important;
+    }
+}
